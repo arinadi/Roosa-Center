@@ -29,3 +29,19 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->middleware('verified');
+
+Route::resource('telegramUsers', 'telegram_usersController');
+
+Route::resource('telegramUsers', 'telegram_usersController');
+
+Route::resource('telegramUsers', 'telegram_usersController');
+
+Route::resource('telegramUsers', 'telegram_usersController');
+
+Route::resource('telegramUsers', 'telegram_usersController');
+
+Route::resource('telegramUsers', 'telegram_usersController');
+
+Route::resource('telegramUsers', 'telegram_usersController');
+
+Route::resource('telegramUsers', 'telegram_usersController');

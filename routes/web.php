@@ -30,18 +30,16 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->middleware('verified');
 
-Route::resource('telegramUsers', 'telegram_usersController');
+Route::resource('devices', 'devicesController')->middleware('verified');
 
-Route::resource('telegramUsers', 'telegram_usersController');
+Route::resource('deviceData', 'device_dataController')->middleware('verified');
 
-Route::resource('telegramUsers', 'telegram_usersController');
+Route::resource('deviceDataCategories', 'device_data_categoriesController')->middleware('verified');
 
-Route::resource('telegramUsers', 'telegram_usersController');
+Route::resource('deviceCommands', 'device_commandController')->middleware('verified');
 
-Route::resource('telegramUsers', 'telegram_usersController');
+Route::resource('botUsers', 'bot_usersController')->middleware('verified');
 
-Route::resource('telegramUsers', 'telegram_usersController');
+Route::resource('botUsersPairDevices', 'bot_users_pair_devicesController')->middleware('verified');
 
-Route::resource('telegramUsers', 'telegram_usersController');
-
-Route::resource('telegramUsers', 'telegram_usersController');
+Route::resource('accountTypes', 'account_typesController')->middleware('verified');

@@ -36,6 +36,10 @@ class device_updateAPIController extends AppBaseController
     private function getDevice()
     {
         $secret_key = $this->request->header('secret-key');
+        if (is_null($secret_key)) {
+            return null;
+        }
+
         $device = devices::where('secret_key', $secret_key)->first();
         //dd($device);
 
@@ -53,6 +57,24 @@ class device_updateAPIController extends AppBaseController
         return $deviceCommands;
     }
 
+    private function getResult($device)
+    {
+        $result = [];
+
+        $deviceCommands = $this->getCommand($device);
+        $result['device_command'] = $deviceCommands;
+
+        return $result;
+    }
+
+    private function handleRequest($device)
+    {
+        // $input = $this->request->input();
+        $input = json_decode($this->request->getContent(), 1);
+
+        return [];
+    }
+
     /**
      * Store a newly created device_command in storage.
      * POST /deviceCommands
@@ -68,9 +90,11 @@ class device_updateAPIController extends AppBaseController
             return $this->sendError('Device not found');
         }
 
-        $deviceCommands = $this->getCommand($device);
+        $result = [];
 
-        $result['device_command'] = $deviceCommands;
+        $result = $this->handleRequest($device);
+
+        $result = array_merge($result, $this->getResult($device));
 
         return $this->sendResponse($result, 'Device Update retrieved successfully');
     }

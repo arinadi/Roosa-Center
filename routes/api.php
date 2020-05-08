@@ -24,7 +24,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Route::resource('device_data_categories', 'device_data_categoriesAPIController');
 
-Route::resource('device_commands', 'device_commandAPIController');
+// Route::resource('device_commands', 'device_commandAPIController');
+
+Route::resource('device_update', 'device_updateAPIController');
 
 // Route::resource('bot_users', 'bot_usersAPIController');
 
